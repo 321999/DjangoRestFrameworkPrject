@@ -17,6 +17,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 from django.urls import re_path, include
+
+# redirectview is used to redirecting  the folder 
 from django.views.generic.base import RedirectView
 
 # from django.conf.urls import url
@@ -25,8 +27,23 @@ from django.views.generic.base import RedirectView
 urlpatterns = [
     path('admin/', admin.site.urls),
 
+# when we dont have any other route that time we use redirectview 
+# so this will lend to us college url and that college url when there is no route is there that time blank route in college url 
     path('',RedirectView.as_view(url='college/')),
     #  path("college/",RedirectView.as_view(url="/home/")),
 
     path("college/",include("college.urls")),
+    # path("college/",include("college.urls")),
+
 ]
+
+'''
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [
+        'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
+    ]
+}
+'''

@@ -4,8 +4,14 @@ from django.views.generic.base import RedirectView
 from college import views
 
 urlpatterns=[
+    path('',RedirectView.as_view(url='/kishre')),
     path("home/",views.home,name="home.py"),
     # whenever the path is blank it will route  to someanother page 
-path('',RedirectView.as_view(url='/home/')),
-    # path("college/",RedirectView.as_view(url="college/ home/")),
+
+    path('kishre/',views.create,name="kishre"),
+# in the college the path when  there is nothing it wil redirect to the kishore path
+path("homepage/",views.homepage,name="homepage"),
+
+# path('',RedirectView.as_view(url='/kishre/')),
+# path("college/",RedirectView.as_view(url="college/ home/")),
 ]
