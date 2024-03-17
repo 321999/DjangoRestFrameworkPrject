@@ -2,9 +2,14 @@ from django.urls import  path,include
 from django.views.generic.base import RedirectView
 # from django.conf.urls import url
 from college import views
+from rest_framework import routers
 
+router=routers.DefaultRouter()
+router.register(r'notice',views.NoticeViewSet)
 urlpatterns=[
-    path('',RedirectView.as_view(url='/kishre')),
+    path('api/',include(router.urls)),
+    path('',RedirectView.as_view(url="api/")),
+    # path('',RedirectView.as_view(url='kishre/')),
     path("home/",views.home,name="home.py"),
     # whenever the path is blank it will route  to someanother page 
 
