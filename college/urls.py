@@ -6,6 +6,8 @@ from rest_framework import routers
 
 router=routers.DefaultRouter()
 router.register(r'notice',views.NoticeViewSet)
+router.register(r'student_ka_data',views.StudentViewSet)
+
 urlpatterns=[
     path('api/',include(router.urls)),
     path('',RedirectView.as_view(url="api/")),
